@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { metaReducer, rootReducer } from 'src/store/reducers/root-reducer';
+import { metaReducers, rootReducer } from 'src/store/reducers/root-reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
@@ -13,8 +15,12 @@ import { metaReducer, rootReducer } from 'src/store/reducers/root-reducer';
       {
         root: rootReducer,
       },
-      { metaReducers: metaReducer }
+      { metaReducers, runtimeChecks: { strictActionTypeUniqueness: true } }
     ),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent],

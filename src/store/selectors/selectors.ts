@@ -1,9 +1,10 @@
-import { createSelector } from "@ngrx/store";
-import { AppState, RootState } from "../reducers/root-reducer";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { AppState, RootState } from '../reducers/root-reducer';
 
-const selectRoot = (state: RootState) => state.root;
+// const selectRoot = (state: RootState) => state.root;
+const AppStateSelector = createFeatureSelector<AppState>('root');
 
 export const getUser = createSelector(
-  selectRoot,
+  AppStateSelector,
   (state: AppState) => state.user
 );

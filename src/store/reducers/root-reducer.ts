@@ -32,7 +32,7 @@ function log(reducer: ActionReducer<AppState>): ActionReducer<AppState> {
   };
 }
 
-export const metaReducer: MetaReducer[] = [log];
+export const metaReducers: MetaReducer[] = [log];
 
 export const rootReducer = createReducer<AppState>(
   initialState,
