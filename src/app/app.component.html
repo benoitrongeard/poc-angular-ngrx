@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Starter ngx</h1>
+
+  <button class="btn btn-primary" (click)="changeUserName('BENOIT')">
+    Changer le nom de l'utilisateur
+  </button>
+
+  <ul>
+    <li>username : {{ (user | async)?.firstname }}</li>
+    <li>admin : {{ (user | async)?.isAdmin }}</li>
+  </ul>
+</div>
