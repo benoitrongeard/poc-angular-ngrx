@@ -9,4 +9,12 @@
     <li>username : {{ (user$ | async)?.firstname }}</li>
     <li>admin : {{ (user$ | async)?.isAdmin }}</li>
   </ul>
+
+  <button class="btn btn-primary" (click)="loadUsers()">Load users</button>
+
+  <ul>
+    <li *ngFor="let user of userList$ | async">
+      {{ user.firstname }} {{ user.name }}
+    </li>
+  </ul>
 </div>

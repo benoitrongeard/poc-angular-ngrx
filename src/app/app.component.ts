@@ -4,8 +4,9 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AdminUser } from 'src/models/admin-user.model';
 import { RootActionGroup } from 'src/store/actions/actions';
+import * as UsersAction from 'src/store/actions/actions';
 import { RootState } from 'src/store/reducers/root-reducer';
-import { getUser } from 'src/store/selectors/selectors';
+import { getUser, getUsers } from 'src/store/selectors/selectors';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,7 @@ export class AppComponent implements OnInit {
   title = 'start';
 
   public user$ = {} as Observable<AdminUser>;
+  public userList$ = {} as Observable<AdminUser[]>;
 
   constructor(
     private store: Store<RootState>,
@@ -26,13 +28,16 @@ export class AppComponent implements OnInit {
     this.store.dispatch(RootActionGroup.init());
 
     this.user$ = this.store.pipe(select(getUser));
-
-    this.httpClient.get('/api/users').subscribe((val) => console.log(val));
+    this.userList$ = this.store.pipe(select(getUsers));
   }
 
   changeUserName(firstname: string) {
     this.store.dispatch(
       RootActionGroup.changeUsername({ firstname: firstname })
     );
+  }
+
+  loadUsers() {
+    this.store.dispatch(UsersAction.loadUsers());
   }
 }

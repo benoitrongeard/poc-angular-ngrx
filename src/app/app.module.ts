@@ -21,6 +21,7 @@ import { HttpClientModule } from '@angular/common/http';
     StoreModule.forRoot(
       {
         root: RootActions.rootReducer,
+        users: RootActions.usersReducer,
       },
       {
         metaReducers: RootActions.metaReducers,
