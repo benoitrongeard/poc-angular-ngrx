@@ -7,11 +7,17 @@ import { StoreModule } from '@ngrx/store';
 import * as RootActions from 'src/store/reducers/root-reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
+import { AppEffects } from 'src/store/effects/effects';
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { UsersData } from 'src/api/users.data';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
+    HttpClientModule,
     StoreModule.forRoot(
       {
         root: RootActions.rootReducer,
@@ -29,6 +35,8 @@ import { environment } from '../environments/environment';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([AppEffects]),
+    InMemoryWebApiModule.forRoot(UsersData),
   ],
   providers: [],
   bootstrap: [AppComponent],

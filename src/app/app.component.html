@@ -6,7 +6,7 @@
   </button>
 
   <ul>
-    <li>username : {{ (user | async)?.firstname }}</li>
-    <li>admin : {{ (user | async)?.isAdmin }}</li>
+    <li>username : {{ (user$ | async)?.firstname }}</li>
+    <li>admin : {{ (user$ | async)?.isAdmin }}</li>
   </ul>
 </div>

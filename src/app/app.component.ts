@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
@@ -14,14 +15,19 @@ import { getUser } from 'src/store/selectors/selectors';
 export class AppComponent implements OnInit {
   title = 'start';
 
-  public user = {} as Observable<AdminUser>;
+  public user$ = {} as Observable<AdminUser>;
 
-  constructor(private store: Store<RootState>) {}
+  constructor(
+    private store: Store<RootState>,
+    private httpClient: HttpClient
+  ) {}
 
   ngOnInit(): void {
     this.store.dispatch(RootActionGroup.init());
 
-    this.user = this.store.pipe(select(getUser));
+    this.user$ = this.store.pipe(select(getUser));
+
+    this.httpClient.get('/api/users').subscribe((val) => console.log(val));
   }
 
   changeUserName(firstname: string) {
