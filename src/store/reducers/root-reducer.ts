@@ -1,6 +1,6 @@
 import { ActionReducer, createReducer, MetaReducer, on } from '@ngrx/store';
 import { AdminUser } from 'src/models/admin-user.model';
-import { changeUsernameAction, initAction } from '../actions/actions';
+import { RootActionGroup } from '../actions/actions';
 
 export interface RootState {
   root: AppState;
@@ -8,6 +8,7 @@ export interface RootState {
 
 export interface AppState {
   user: AdminUser;
+  users?: AdminUser[];
   appName: string;
 }
 
@@ -36,7 +37,7 @@ export const metaReducers: MetaReducer[] = [log];
 
 export const rootReducer = createReducer<AppState>(
   initialState,
-  on(initAction, (state: AppState) => {
+  on(RootActionGroup.init, (state: AppState) => {
     return {
       ...state,
       user: {
@@ -46,7 +47,7 @@ export const rootReducer = createReducer<AppState>(
     };
   }),
 
-  on(changeUsernameAction, (state: AppState, props) => {
+  on(RootActionGroup.changeUsername, (state: AppState, props) => {
     return {
       ...state,
       user: {

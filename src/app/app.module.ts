@@ -3,7 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { StoreModule } from '@ngrx/store';
-import { metaReducers, rootReducer } from 'src/store/reducers/root-reducer';
+// Permet l'import multiple en 1 ligne
+import * as RootActions from 'src/store/reducers/root-reducer';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 
@@ -13,9 +14,16 @@ import { environment } from '../environments/environment';
     BrowserModule,
     StoreModule.forRoot(
       {
-        root: rootReducer,
+        root: RootActions.rootReducer,
       },
-      { metaReducers, runtimeChecks: { strictActionTypeUniqueness: true } }
+      {
+        metaReducers: RootActions.metaReducers,
+        runtimeChecks: {
+          strictActionTypeUniqueness: true,
+          strictActionImmutability: true,
+          strictStateImmutability: true,
+        },
+      }
     ),
     StoreDevtoolsModule.instrument({
       maxAge: 25,

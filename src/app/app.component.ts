@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { AdminUser } from 'src/models/admin-user.model';
-import { changeUsernameAction, initAction } from 'src/store/actions/actions';
-import { AppState, RootState } from 'src/store/reducers/root-reducer';
+import { RootActionGroup } from 'src/store/actions/actions';
+import { RootState } from 'src/store/reducers/root-reducer';
 import { getUser } from 'src/store/selectors/selectors';
 
 @Component({
@@ -19,12 +19,14 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<RootState>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(initAction());
+    this.store.dispatch(RootActionGroup.init());
 
     this.user = this.store.pipe(select(getUser));
   }
 
   changeUserName(firstname: string) {
-    this.store.dispatch(changeUsernameAction({ firstname: firstname }));
+    this.store.dispatch(
+      RootActionGroup.changeUsername({ firstname: firstname })
+    );
   }
 }
