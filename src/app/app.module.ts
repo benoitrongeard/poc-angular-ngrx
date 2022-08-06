@@ -12,12 +12,14 @@ import { AppEffects } from 'src/store/effects/effects';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UsersData } from 'src/api/users.data';
 import { HttpClientModule } from '@angular/common/http';
+import { BooksModule } from './books/books.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
+    BooksModule,
     StoreModule.forRoot(
       {
         root: RootActions.rootReducer,
