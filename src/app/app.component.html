@@ -1,7 +1,7 @@
-<div class="container">
-  <h1>Starter ngx</h1>
+<div class="container mt-5">
+  <button class="btn btn-primary" routerLink="/books">Books 📚</button>
 
-  <button class="btn btn-primary" (click)="changeUserName('BENOIT')">
+  <button class="btn btn-primary ms-3" (click)="changeUserName('BENOIT')">
     Changer le nom de l'utilisateur
   </button>
 
@@ -22,4 +22,8 @@
       {{ user.firstname }} {{ user.name }}
     </li>
   </ul>
+</div>
+
+<div class="container mt-5">
+  <router-outlet></router-outlet>
 </div>

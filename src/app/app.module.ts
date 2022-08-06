@@ -13,13 +13,13 @@ import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { UsersData } from 'src/api/users.data';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksModule } from './books/books.module';
+import { AppRoutingModule } from './app-routing.module';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     HttpClientModule,
-    BooksModule,
     StoreModule.forRoot(
       {
         root: RootActions.rootReducer,
@@ -40,6 +40,7 @@ import { BooksModule } from './books/books.module';
     }),
     EffectsModule.forRoot([AppEffects]),
     InMemoryWebApiModule.forRoot(UsersData),
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
