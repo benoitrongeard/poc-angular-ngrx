@@ -10,6 +10,6 @@ export class UsersService {
   constructor(private httpClient: HttpClient) {}
 
   getAllUsers(): Observable<AdminUser[]> {
-    return this.httpClient.get<AdminUser[]>('/api/usersV2').pipe(delay(3000));
+    return this.httpClient.get<AdminUser[]>('/api/users').pipe(delay(3000));
   }
 }

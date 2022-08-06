@@ -22,6 +22,7 @@ const initialState: AppState = {
 
 export interface UsersState {
   users: AdminUser[];
+  error?: any;
 }
 
 const initialUsersState: UsersState = {
@@ -85,9 +86,10 @@ export const usersReducer = createReducer<UsersState>(
 
   on(UsersAction.loadUsersError, (state: UsersState, props) => {
     console.log('ERROR GET USERS');
-    console.log(props.error);
+    console.log(props);
     return {
       ...state,
+      error: props.error,
     };
   })
 );

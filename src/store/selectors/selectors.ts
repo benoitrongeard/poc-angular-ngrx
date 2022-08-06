@@ -15,3 +15,8 @@ export const getUsers = createSelector(
   UsersSelector,
   (state: UsersState) => state.users
 );
+
+export const getUsersError = createSelector(
+  UsersSelector,
+  (state: UsersState) => state.error
+ );

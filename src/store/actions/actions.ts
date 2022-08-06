@@ -45,5 +45,5 @@ export const loadUsersSuccess = createAction(
 
 export const loadUsersError = createAction(
   ActionTypes.LOAD_USERS_FAILURE,
-  props<{ error: HttpErrorResponse | Error }>()
+  props<{ error: HttpErrorResponse }>()
 );

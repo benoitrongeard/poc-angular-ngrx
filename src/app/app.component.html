@@ -12,6 +12,11 @@
 
   <button class="btn btn-primary" (click)="loadUsers()">Load users</button>
 
+  <ng-container>
+    {{ (userError$ | async)?.body?.error }}
+    <p>toto</p>
+  </ng-container>
+
   <ul>
     <li *ngFor="let user of userList$ | async">
       {{ user.firstname }} {{ user.name }}
