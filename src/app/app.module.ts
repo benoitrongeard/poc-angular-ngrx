@@ -10,7 +10,7 @@ import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { AppEffects } from 'src/store/effects/effects';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
-import { UsersData } from 'src/api/users.data';
+import { Datas } from 'src/api/datas';
 import { HttpClientModule } from '@angular/common/http';
 import { BooksModule } from './books/books.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -39,7 +39,7 @@ import { AppRoutingModule } from './app-routing.module';
       logOnly: environment.production,
     }),
     EffectsModule.forRoot([AppEffects]),
-    InMemoryWebApiModule.forRoot(UsersData),
+    InMemoryWebApiModule.forRoot(Datas),
     AppRoutingModule,
   ],
   providers: [],

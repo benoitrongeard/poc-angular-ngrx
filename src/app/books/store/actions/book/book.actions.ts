@@ -1,12 +1,11 @@
 import { createAction, props } from '@ngrx/store';
+import { Book } from 'src/app/books/models/book.model';
 
-export const loadBooks = createAction(
-  '[Book] Load Books'
-);
+export const loadBooks = createAction('[Book] Load Books');
 
 export const loadBooksSuccess = createAction(
   '[Book] Load Books Success',
-  props<{ data: any }>()
+  props<{ data: Book[] }>()
 );
 
 export const loadBooksFailure = createAction(
