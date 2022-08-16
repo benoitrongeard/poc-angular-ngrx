@@ -10,9 +10,8 @@ import * as UserActions from 'src/store/actions/actions';
 export class AppEffects {
   loadUsers$ = createEffect(() =>
     this.actions$.pipe(
-      tap((val) => console.log('TOTOTOTO - ' + val)),
       ofType(UserActions.loadUsers),
-      mergeMap((action) =>
+      mergeMap(() =>
         this.userService.getAllUsers().pipe(
           map((users: AdminUser[]) => UserActions.loadUsersSuccess({ users })),
           catchError((error: HttpErrorResponse) =>
