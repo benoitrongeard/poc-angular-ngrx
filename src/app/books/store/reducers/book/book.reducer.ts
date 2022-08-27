@@ -20,7 +20,6 @@ export const reducer = createReducer(
     return { ...state };
   }),
   on(BooksActions.loadBooksSuccess, (state: BooksState, props) => {
-    console.log('test get load books success');
     return {
       ...state,
       books: props.books,

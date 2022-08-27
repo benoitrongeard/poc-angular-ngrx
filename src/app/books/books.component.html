@@ -3,3 +3,10 @@
 <button class="btn btn-primary ms-3" (click)="getBooks()">
   Récupérer les livres
 </button>
+
+<ul>
+  <li *ngFor="let book of books$ | async">
+    {{ book.id }}
+    {{ book.author }}
+  </li>
+</ul>
